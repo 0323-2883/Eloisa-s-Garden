@@ -7,6 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -92,6 +93,7 @@ body::before{
     padding:10px 16px;
     border-radius:30px;
     transition:0.3s ease;
+    display:block;
 }
 
 .nav-links a:hover{
@@ -306,6 +308,7 @@ footer{
 
 /* ANIMATION */
 @keyframes fadeIn{
+
     from{
         opacity:0;
         transform:translateY(30px);
@@ -317,7 +320,7 @@ footer{
     }
 }
 
-/* RESPONSIVE */
+/* TABLET RESPONSIVE */
 @media(max-width:900px){
 
     .navbar{
@@ -339,6 +342,164 @@ footer{
     }
 }
 
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    .navbar{
+        flex-direction:column;
+        align-items:center;
+        gap:15px;
+        padding:18px 5%;
+    }
+
+    .logo h1{
+        font-size:24px;
+        text-align:center;
+    }
+
+    .nav-links{
+        width:100%;
+        justify-content:center;
+        gap:10px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+        padding:10px 14px;
+    }
+
+    /* DROPDOWN */
+    .dropdown-content{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        margin-top:10px;
+        width:100%;
+        display:none;
+        border-radius:15px;
+    }
+
+    .dropdown:hover .dropdown-content{
+        display:block;
+    }
+
+    /* HERO */
+    .hero{
+        min-height:auto;
+        padding:80px 20px;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:38px;
+        line-height:1.2;
+    }
+
+    .hero p{
+        font-size:16px;
+        line-height:1.7;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+        text-align:center;
+    }
+
+    /* SECTION */
+    .section{
+        padding:70px 5%;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .section-title p{
+        font-size:16px;
+    }
+
+    /* CARDS */
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:220px;
+    }
+
+    .card h3{
+        font-size:21px;
+    }
+
+    .card p{
+        font-size:15px;
+    }
+
+    /* FEATURES */
+    .features{
+        grid-template-columns:1fr;
+        margin-top:50px;
+    }
+
+    .feature-box{
+        padding:28px 20px;
+    }
+
+    footer{
+        font-size:14px;
+        padding:20px;
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .logo h1{
+        font-size:21px;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        width:100%;
+        text-align:center;
+    }
+}
+
 </style>
 </head>
 
@@ -353,23 +514,50 @@ footer{
 
     <ul class="nav-links">
 
-        <li><a href="dropdown.html" class="active">Home</a></li>
+        <li>
+            <a href="dropdown.html" class="active">
+                Home
+            </a>
+        </li>
 
-        <li><a href="About us.html">About Us</a></li>
+        <li>
+            <a href="About us.html">
+                About Us
+            </a>
+        </li>
 
         <!-- DROPDOWN -->
         <li class="dropdown">
-            <a href="#">Our Products ▼</a>
+
+            <a href="#">
+                Our Products ▼
+            </a>
 
             <div class="dropdown-content">
-                <a href="Indoor.html">🌱 Indoor Plants</a>
-                <a href="outdoor.html">🌳 Outdoor Plants</a>
+
+                <a href="Indoor.html">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="outdoor.html">
+                    🌳 Outdoor Plants
+                </a>
+
             </div>
+
         </li>
 
-       <li><a href="About Our Products.html">About Our Products</a></li>
+        <li>
+            <a href="About Our Products.html">
+                About Our Products
+            </a>
+        </li>
 
-        <li><a href="Contact.html">Contact Us</a></li>
+        <li>
+            <a href="Contact.html">
+                Contact Us
+            </a>
+        </li>
 
     </ul>
 
@@ -380,18 +568,31 @@ footer{
 
     <div class="hero-content">
 
-        <h1>Bring Nature <span>Closer</span> To Your Home</h1>
+        <h1>
+            Bring Nature
+            <span>Closer</span>
+            To Your Home
+        </h1>
 
         <p>
-            Welcome to Eloisa's Garden — your peaceful place for beautiful
-            indoor and outdoor plants. We help bring freshness, happiness,
+            Welcome to Eloisa's Garden — your peaceful place
+            for beautiful indoor and outdoor plants.
+            We help bring freshness, happiness,
             and natural beauty into every home and garden.
         </p>
 
         <div class="hero-buttons">
-            <a href="Indoor.html" class="btn btn-green">Shop Indoor Plants</a>
 
-            <a href="outdoor.html" class="btn btn-white">Explore Outdoor Plants</a>
+            <a href="Indoor.html"
+            class="btn btn-green">
+                Shop Indoor Plants
+            </a>
+
+            <a href="outdoor.html"
+            class="btn btn-white">
+                Explore Outdoor Plants
+            </a>
+
         </div>
 
     </div>
@@ -402,61 +603,84 @@ footer{
 <section class="section">
 
     <div class="section-title">
+
         <h2>Our Favorite Plants</h2>
+
         <p>
-            Discover our most loved plants perfect for homes, offices,
-            and gardens.
+            Discover our most loved plants perfect
+            for homes, offices, and gardens.
         </p>
+
     </div>
 
-        <div class="cards">
+    <div class="cards">
 
         <div class="card">
+
             <img src="Webpage Images\Epipremnum Aureum (Golden Pothos).jpg">
 
             <div class="card-content">
+
                 <h3>Epipremnum Aureum</h3>
+
                 <p>
-                    A beautiful tropical indoor plant with vibrant green leaves
-                    that instantly freshens any room.
+                    A beautiful tropical indoor plant with vibrant
+                    green leaves that instantly freshens any room.
                 </p>
+
             </div>
+
         </div>
 
         <div class="card">
+
             <img src="Webpage Images\Dracaena Marginata.jpg">
 
             <div class="card-content">
+
                 <h3>Dracaena Marginata</h3>
+
                 <p>
-                    A strong and elegant plant known for its air-purifying
-                    qualities and low maintenance care.
+                    A strong and elegant plant known for its
+                    air-purifying qualities and low maintenance care.
                 </p>
+
             </div>
+
         </div>
 
         <div class="card">
+
             <img src="Webpage Images\Algaonema Commutatum.jpg">
 
             <div class="card-content">
+
                 <h3>Aglaonema Commutatum</h3>
+
                 <p>
-                    A stylish shade-loving plant with soft green leaves perfect
-                    for relaxing indoor spaces.
+                    A stylish shade-loving plant with soft green
+                    leaves perfect for relaxing indoor spaces.
                 </p>
+
             </div>
+
         </div>
 
         <div class="card">
+
             <img src="Webpage Images\Zamioculcas Zamiifolia (welcome plant).jpg">
 
             <div class="card-content">
+
                 <h3>Zamioculcas Zamiifolia</h3>
+
                 <p>
-                    A modern low-maintenance plant that survives with little
-                    water and adds elegance anywhere.
+                    A modern low-maintenance plant that survives
+                    with little water and adds elegance anywhere.
                 </p>
+
             </div>
+
         </div>
 
     </div>
@@ -465,24 +689,36 @@ footer{
     <div class="features">
 
         <div class="feature-box">
+
             <h3>🌿 Fresh Plants</h3>
+
             <p>
-                Healthy and high-quality plants carefully grown with love and care.
+                Healthy and high-quality plants carefully
+                grown with love and care.
             </p>
+
         </div>
 
         <div class="feature-box">
+
             <h3>🚚 Easy Ordering</h3>
+
             <p>
-                Simple and convenient ordering process for all customers.
+                Simple and convenient ordering process
+                for all customers.
             </p>
+
         </div>
 
         <div class="feature-box">
+
             <h3>💚 Nature Inspired</h3>
+
             <p>
-                Bringing peace, beauty, and freshness into every home.
+                Bringing peace, beauty, and freshness
+                into every home.
             </p>
+
         </div>
 
     </div>
