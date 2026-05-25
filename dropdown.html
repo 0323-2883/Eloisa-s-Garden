@@ -505,35 +505,36 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
+<!-- REPLACE YOUR OLD NAVBAR WITH THIS -->
+
 <div class="navbar">
 
     <div class="logo">
         <h1>🌿 Eloisa's Garden</h1>
     </div>
 
-    <ul class="nav-links">
+    <!-- MENU BUTTON -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul class="nav-links" id="navMenu">
+
+        <li><a href="dropdown.html">Home</a></li>
 
         <li>
-            <a href="dropdown.html" class="active">
-                Home
-            </a>
-        </li>
-
-        <li>
-            <a href="About us.html">
+            <a href="About us.html" class="active">
                 About Us
             </a>
         </li>
 
-        <!-- DROPDOWN -->
         <li class="dropdown">
 
-            <a href="#">
+            <a href="#" onclick="toggleDropdown(event)">
                 Our Products ▼
             </a>
 
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdownMenu">
 
                 <a href="Indoor.html">
                     🌱 Indoor Plants
