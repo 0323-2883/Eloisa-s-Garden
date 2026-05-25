@@ -284,6 +284,216 @@ textarea{
     .info-grid{
         grid-template-columns:1fr;
     }
+<!-- ADD THIS BELOW YOUR EXISTING CSS -->
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media(max-width:900px){
+
+    /* NAVBAR */
+    .navbar{
+        flex-direction:column;
+        gap:18px;
+        padding:18px 5%;
+    }
+
+    .logo{
+        font-size:25px;
+        text-align:center;
+    }
+
+    .nav-links{
+        justify-content:center;
+        gap:10px;
+        width:100%;
+    }
+
+    .nav-links a{
+        font-size:14px;
+        padding:10px 14px;
+    }
+
+    .logout-btn{
+        width:100%;
+    }
+
+    /* PROFILE CONTAINER */
+    .profile-container{
+        grid-template-columns:1fr;
+        padding:15px;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+        padding:22px;
+    }
+
+    .profile-pic{
+        width:110px;
+        height:110px;
+    }
+
+    .username{
+        font-size:22px;
+    }
+
+    /* CONTENT */
+    .profile-content{
+        padding:28px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    /* INFO GRID */
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .input-box{
+        width:100%;
+    }
+
+    .input-box[style]{
+        grid-column:auto !important;
+    }
+
+    textarea{
+        height:120px;
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    .navbar{
+        padding:16px 4%;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        width:100%;
+        text-align:center;
+    }
+
+    /* PROFILE */
+    .profile-container{
+        margin:20px auto;
+        padding:12px;
+        gap:18px;
+    }
+
+    .sidebar{
+        border-radius:22px;
+    }
+
+    .profile-content{
+        border-radius:22px;
+        padding:22px 18px;
+    }
+
+    /* TITLES */
+    .section-title{
+        font-size:24px;
+        text-align:center;
+    }
+
+    .order-box h3{
+        font-size:22px;
+        text-align:center;
+    }
+
+    /* INPUTS */
+    .input-box label{
+        font-size:14px;
+    }
+
+    .input-box input,
+    .input-box textarea{
+        font-size:14px;
+        padding:13px;
+    }
+
+    /* BUTTON */
+    .save-btn{
+        width:100%;
+        padding:14px;
+    }
+
+    /* SIDEBAR MENU */
+    .sidebar-menu a{
+        font-size:14px;
+        padding:13px;
+    }
+
+    .sidebar-menu a span{
+        font-size:12px;
+    }
+
+    /* ORDERS */
+    .order-item{
+        font-size:14px;
+        line-height:1.6;
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+@media(max-width:480px){
+
+    .logo{
+        font-size:21px;
+    }
+
+    .profile-pic{
+        width:95px;
+        height:95px;
+    }
+
+    .username{
+        font-size:20px;
+    }
+
+    .section-title{
+        font-size:22px;
+    }
+
+    .order-box h3{
+        font-size:20px;
+    }
+
+    .sidebar-menu a{
+        font-size:13px;
+        padding:12px;
+    }
+
+    .input-box input,
+    .input-box textarea{
+        font-size:13px;
+    }
+
+    .save-btn{
+        font-size:14px;
+    }
+
+    .order-item{
+        font-size:13px;
+    }
 }
 
 </style>
