@@ -1,3 +1,5 @@
+icompile mo din sa indoor
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,21 +94,12 @@ body::before{
     padding:10px 16px;
     border-radius:30px;
     transition:0.3s ease;
-    display:block;
 }
 
 .nav-links a:hover{
     background:white;
     color:#2e7d32;
     transform:translateY(-2px);
-}
-
-/* ACTIVE PAGE */
-.nav-links a.active{
-    background:white;
-    color:#2e7d32;
-    font-weight:600;
-    box-shadow:0 4px 12px rgba(255,255,255,0.25);
 }
 
 /* DROPDOWN */
@@ -450,12 +443,41 @@ h3{
     }
 }
 
+/* MOBILE */
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .search-box input{
+        width:90%;
+    }
+
+    h3{
+        font-size:40px;
+    }
+/* ACTIVE PAGE */
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+<!-- ADD THIS AT THE VERY BOTTOM OF YOUR CSS -->
+
 /* =========================
    MOBILE RESPONSIVE DESIGN
 ========================= */
 
 @media(max-width:900px){
 
+    /* NAVBAR */
     .navbar{
         flex-direction:column;
         gap:18px;
@@ -477,6 +499,7 @@ h3{
         padding:10px 14px;
     }
 
+    /* AUTH BUTTONS */
     .auth-buttons{
         width:100%;
         justify-content:center;
@@ -488,11 +511,13 @@ h3{
         margin-left:0;
     }
 
+    /* ACCOUNT INFO */
     .account-info{
         flex-wrap:wrap;
         justify-content:center;
     }
 
+    /* TITLE */
     h3{
         font-size:42px;
     }
@@ -502,6 +527,7 @@ h3{
         padding:0 10px;
     }
 
+    /* SEARCH */
     .search-box{
         display:flex;
         flex-direction:column;
@@ -519,6 +545,7 @@ h3{
         max-width:220px;
     }
 
+    /* CARDS */
     .cards{
         grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     }
@@ -526,14 +553,15 @@ h3{
     .card img{
         height:230px;
     }
-}
 
+/* MOBILE */
 @media(max-width:768px){
 
     body{
         overflow-x:hidden;
     }
 
+    /* NAVIGATION */
     .navbar{
         padding:16px 4%;
     }
@@ -553,6 +581,7 @@ h3{
         text-align:center;
     }
 
+    /* DROPDOWN */
     .dropdown-content{
         position:static;
         opacity:1;
@@ -568,10 +597,12 @@ h3{
         display:block;
     }
 
+    /* CONTAINER */
     .container{
         padding:30px 15px;
     }
 
+    /* TITLE */
     h3{
         font-size:35px;
         line-height:1.2;
@@ -582,6 +613,7 @@ h3{
         line-height:1.6;
     }
 
+    /* SEARCH */
     .search-box input{
         width:100%;
         font-size:15px;
@@ -591,6 +623,7 @@ h3{
         width:100%;
     }
 
+    /* CARDS */
     .cards{
         grid-template-columns:1fr;
         gap:20px;
@@ -612,6 +645,7 @@ h3{
         width:100%;
     }
 
+    /* CHECKOUT BUTTON */
     .checkout-btn{
         width:100%;
         max-width:320px;
@@ -619,12 +653,14 @@ h3{
         font-size:18px;
     }
 
+    /* MODAL */
     .modal-content{
         width:92%;
         margin:25% auto;
         padding:25px;
     }
 
+    /* TOAST */
     #toast{
         right:10px;
         left:10px;
@@ -633,6 +669,7 @@ h3{
     }
 }
 
+/* EXTRA SMALL DEVICES */
 @media(max-width:480px){
 
     .logo{
@@ -663,9 +700,584 @@ h3{
 
 </style>
 </head>
+
 <body>
 
-<!-- YOUR ORIGINAL HTML CONTENT HERE -->
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        🌿 Eloisa's Garden
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="dropdown.html">
+                Home
+            </a>
+        </li>
+
+        <!-- DROPDOWN -->
+        <li class="dropdown">
+
+            <a href="#">
+                Our Plants ▼
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="Indoor.html" class="active">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="outdoor.html">
+                    🌳 Outdoor Plants
+                </a>
+
+            </div>
+
+        </li>
+
+        <li>
+            <a href="#"
+            onclick="openProfile(event)">
+                👤 Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="Cart.html"
+            onclick="openCart(event)">
+
+                🛒 Cart
+
+                <span id="cartCount">
+                    0
+                </span>
+
+            </a>
+        </li>
+
+    </ul>
+
+    <!-- SIGN IN / SIGN UP -->
+    <div class="auth-buttons"
+    id="authButtons">
+
+        <button onclick="openModal('login')">
+            Sign In
+        </button>
+
+        <button onclick="openModal('signup')">
+            Sign Up
+        </button>
+
+    </div>
+
+    <!-- ACCOUNT INFO -->
+    <div class="account-info"
+    id="accountInfo"
+    style="display:none;">
+
+        👤 <span id="accountName"></span>
+
+        <button onclick="logout()"
+        class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h3>🌿 Indoor Plants</h3>
+
+    <p class="subtitle">
+        Perfect plants for your home and office spaces
+    </p>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input type="text"
+        id="searchInput"
+        placeholder="🔍 Search plants...">
+
+        <button onclick="searchPlants()">
+            Search
+        </button>
+
+    </div>
+	<!-- CARDS -->
+    <div class="cards">
+
+        <div class="card">
+            <img src="Webpage Images\Epipremnum Aureum (Golden Pothos).jpg">
+            <h2>Epipremnum Aureum</h2>
+            <p class="price">₱150</p>
+            <button onclick="addToCart('Epipremnum Aureum',150)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Dracaena Marginata.jpg">
+            <h2>Dracaena Marginata</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Dracaena Marginata',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Algaonema Commutatum.jpg">
+            <h2>Algaonema Commutatum</h2>
+            <p class="price">₱170</p>
+            <button onclick="addToCart('Algaonema Commutatum',170)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Zamioculcas Zamiifolia (welcome plant).jpg">
+            <h2>Zamioculcas Zamiifolia</h2>
+            <p class="price">₱220</p>
+            <button onclick="addToCart('Zamioculcas Zamiifolia',220)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Spathiphyllum Wallisii .jpg">
+            <h2>Spathiphyllum Wallisii</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Spathiphyllum Wallisii',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Ficus elastica (rubber tree) .jpg">
+            <h2>Ficus Elastica Rubber Tree</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Ficus Elastica Rubber Tree',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Snake plant.jpg">
+            <h2>Snake Plant</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Snake Plant',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Monstera deliciosa.jpg">
+            <h2>Monstera Deliciosa</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Monstera Deliciosa',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Excoecaria cochinchinensis (Picara) (2).jpg">
+            <h2>Excoecaria Cochinchinensis Picara</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Excoecaria Cochinchinensis Picara',200)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="Webpage Images\Alocasia Black Velvet (2).jpg">
+            <h2>Alocasia Black Velvet</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Alocasia Black Velvet',200)">Add to Cart</button>
+        </div>
+
+    </div>
+
+    <!-- CHECKOUT -->
+    <div class="checkout-container">
+
+        <a href="cart.html"
+        class="checkout-btn"
+        id="checkoutBtn">
+
+            🛒 Checkout
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- SOUND -->
+<audio id="addSound" src="click.mp3"></audio>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal('login')">
+            &times;
+        </span>
+
+        <h2>Sign In</h2>
+
+        <input type="text"
+        id="loginUser"
+        placeholder="Username">
+
+        <input type="password"
+        id="loginPass"
+        placeholder="Password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal('signup')">
+            &times;
+        </span>
+
+        <h2>Create Account</h2>
+
+        <input type="text"
+        id="signupUser"
+        placeholder="Username">
+
+        <input type="password"
+        id="signupPass"
+        placeholder="Password">
+
+        <button onclick="signup()">
+            Create Account
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* UPDATE CART COUNT */
+function updateCartCount(){
+
+    let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    let totalItems = 0;
+
+    cart.forEach(item => {
+        totalItems += item.qty;
+    });
+
+    document.getElementById("cartCount")
+    .innerText = totalItems;
+}
+
+/* ADD TO CART */
+function addToCart(name, price){
+
+    let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existing =
+    cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.qty += 1;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+    }
+
+    localStorage.setItem("cart",
+    JSON.stringify(cart));
+
+    updateCartCount();
+
+    let sound =
+    document.getElementById("addSound");
+
+    sound.currentTime = 0;
+    sound.play();
+
+    showToast(name + " added to cart ✔");
+}
+
+/* TOAST */
+function showToast(message){
+
+    let toast =
+    document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.className = "show";
+
+    setTimeout(() => {
+
+        toast.className =
+        toast.className.replace("show","");
+
+    },2000);
+}
+
+/* SEARCH */
+function searchPlants(){
+
+    let input =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    let cards =
+    document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let title =
+        card.querySelector("h2")
+        .innerText.toLowerCase();
+
+        if(title.includes(input)){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+        }
+    });
+}
+
+/* ENTER SEARCH */
+document.getElementById("searchInput")
+.addEventListener("keyup", function(event){
+
+    if(event.key === "Enter"){
+
+        searchPlants();
+    }
+});
+
+/* OPEN PROFILE ONLY IF LOGGED IN */
+function openProfile(event){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    if(loggedIn === "true"){
+
+        window.location.href = "profile.html";
+
+    }else{
+
+        event.preventDefault();
+
+        alert("Please Sign In or Sign Up first.");
+
+        openModal("login");
+    }
+}
+
+/* OPEN CART ONLY IF LOGGED IN */
+function openCart(event){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    if(loggedIn === "true"){
+
+        window.location.href = "cart.html";
+
+    }else{
+
+        event.preventDefault();
+
+        alert("Please Sign In or Sign Up first before opening cart.");
+
+        openModal("login");
+    }
+}
+
+/* OPEN MODAL */
+function openModal(type){
+
+    if(type === "login"){
+
+        document.getElementById("loginModal")
+        .style.display = "block";
+    }
+
+    if(type === "signup"){
+
+        document.getElementById("signupModal")
+        .style.display = "block";
+    }
+}
+
+/* CLOSE MODAL */
+function closeModal(type){
+
+    if(type === "login"){
+
+        document.getElementById("loginModal")
+        .style.display = "none";
+    }
+
+    if(type === "signup"){
+
+        document.getElementById("signupModal")
+        .style.display = "none";
+    }
+}
+
+/* SIGN UP */
+function signup(){
+
+    let username =
+    document.getElementById("signupUser").value;
+
+    let password =
+    document.getElementById("signupPass").value;
+
+    if(username === "" || password === ""){
+
+        alert("Please fill all fields!");
+
+        return;
+    }
+
+    let user = {
+
+        username: username,
+        password: password
+    };
+
+    localStorage.setItem(
+        "userAccount",
+        JSON.stringify(user)
+    );
+
+    alert("Account created successfully!");
+
+    closeModal("signup");
+}
+
+/* LOGIN */
+function login(){
+
+    let username =
+    document.getElementById("loginUser").value;
+
+    let password =
+    document.getElementById("loginPass").value;
+
+    let savedUser =
+    JSON.parse(localStorage.getItem("userAccount"));
+
+    if(!savedUser){
+
+        alert("No account found. Please sign up first.");
+
+        return;
+    }
+
+    if(username === savedUser.username &&
+       password === savedUser.password){
+
+        localStorage.setItem("loggedIn","true");
+
+        alert("Login successful!");
+
+        closeModal("login");
+
+        checkLoginStatus();
+
+    }else{
+
+        alert("Incorrect username or password.");
+    }
+}
+
+/* CHECK LOGIN STATUS */
+function checkLoginStatus(){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    let user =
+    JSON.parse(localStorage.getItem("userAccount"));
+
+    if(loggedIn === "true" && user){
+
+        document.getElementById("authButtons")
+        .style.display = "none";
+
+        document.getElementById("accountInfo")
+        .style.display = "flex";
+
+        document.getElementById("accountName")
+        .innerText = user.username;
+
+    }else{
+
+        document.getElementById("authButtons")
+        .style.display = "flex";
+
+        document.getElementById("accountInfo")
+        .style.display = "none";
+    }
+}
+
+/* LOGOUT */
+function logout(){
+
+    localStorage.removeItem("loggedIn");
+
+    alert("Logged out successfully!");
+
+    checkLoginStatus();
+}
+
+/* CHECKOUT LOGIN */
+document.getElementById("checkoutBtn")
+.addEventListener("click", function(event){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    if(loggedIn !== "true"){
+
+        event.preventDefault();
+
+        alert("Please Sign In or Sign Up first before checkout.");
+
+        openModal("login");
+    }
+});
+
+/* RUN */
+updateCartCount();
+checkLoginStatus();
+
+</script>
 
 </body>
 </html>
