@@ -287,158 +287,91 @@ footer{
 @media(max-width:768px){
 
     body{
-        overflow-x:hidden;
+        padding:12px;
     }
 
-    /* NAVBAR */
-    .navbar{
+    /* TOPBAR */
+    .topbar{
         flex-direction:column;
-        align-items:center;
-        gap:15px;
-        padding:18px 5%;
+        align-items:flex-start;
     }
 
-    .logo h1{
-        font-size:24px;
-        text-align:center;
-    }
-
-    .nav-links{
-        width:100%;
-        justify-content:center;
-        gap:10px;
-    }
-
-    .nav-links a{
-        font-size:14px;
-        padding:10px 14px;
-    }
-
-    /* DROPDOWN */
-    .dropdown-content{
-        position:static;
-        opacity:1;
-        visibility:visible;
-        transform:none;
-        margin-top:10px;
-        width:100%;
-        display:none;
-        border-radius:15px;
-    }
-
-    .dropdown:hover .dropdown-content{
-        display:block;
-    }
-
-    /* HERO */
-    .hero{
-        min-height:auto;
-        padding:80px 20px;
-    }
-
-    .hero-content{
-        width:100%;
-    }
-
-    .hero h1{
-        font-size:38px;
-        line-height:1.2;
-    }
-
-    .hero p{
-        font-size:16px;
-        line-height:1.7;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .btn{
-        width:100%;
-        max-width:300px;
-        text-align:center;
-    }
-
-    /* SECTION */
-    .section{
-        padding:70px 5%;
-    }
-
-    .section-title h2{
-        font-size:34px;
-    }
-
-    .section-title p{
-        font-size:16px;
-    }
-
-    /* CARDS */
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .card img{
-        height:220px;
-    }
-
-    .card h3{
-        font-size:21px;
-    }
-
-    .card p{
-        font-size:15px;
-    }
-
-    /* FEATURES */
-    .features{
-        grid-template-columns:1fr;
-        margin-top:50px;
-    }
-
-    .feature-box{
-        padding:28px 20px;
-    }
-
-    footer{
-        font-size:14px;
-        padding:20px;
-    }
-}
-
-/* EXTRA SMALL DEVICES */
-@media(max-width:480px){
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .section-title h2{
+    .topbar h1{
         font-size:28px;
     }
 
-    .logo h1{
-        font-size:21px;
+    /* STATS */
+    .stats-grid{
+        grid-template-columns:1fr;
     }
 
-    .nav-links{
+    /* SEARCH */
+    .search-box{
         flex-direction:column;
+    }
+
+    .search-box input,
+    .search-box button{
         width:100%;
     }
 
-    .nav-links li{
+    /* ORDER CARD */
+    .order{
+        padding:18px;
+    }
+
+    .order-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .customer{
         width:100%;
     }
 
-    .nav-links a{
-        width:100%;
-        text-align:center;
+    .customer h2{
+        font-size:18px;
     }
+
+    /* INFO BOX */
+    .order-info{
+        grid-template-columns:1fr;
+    }
+
+    /* ITEMS */
+    .item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+    }
+
+    /* BUTTONS */
+    .actions{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .actions select,
+    .delete-btn{
+        width:100%;
+    }
+
+    /* RECEIPT IMAGE */
+    .receipt img{
+        width:100%;
+        max-width:250px;
+    }
+
+    /* LOGIN */
+    #loginBox{
+        margin-top:40px;
+        padding:25px;
+    }
+
+    #loginBox h2{
+        font-size:26px;
+    }
+
 }
 
 </style>
