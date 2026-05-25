@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Our Products</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+    text-decoration:none;
+}
+
+/* BODY */
+body{
+    background:
+    linear-gradient(rgba(255,255,255,0.12),rgba(0,0,0,0.15)),
+    url("Indoorbg.jpg") no-repeat center center/cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(46,125,50,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    flex-wrap:wrap;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-size:30px;
+    font-weight:700;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:55px;
+    left:0;
+    background:white;
+    min-width:220px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:80px 20px 40px;
+    color:white;
+}
+
+.header h1{
+    font-size:65px;
+    margin-bottom:15px;
+    text-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.header p{
+    font-size:20px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    color:#f1f1f1;
+}
+
+/* SECTION */
+.section{
+    padding:60px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:45px;
+    color:white;
+    margin-bottom:10px;
+    text-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+.section-title p{
+    color:#f1f1f1;
+    font-size:18px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.92);
+    border-radius:25px;
+    overflow:hidden;
+    backdrop-filter:blur(8px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:0.4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card h3{
+    color:#2e7d32;
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.card p{
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+    font-size:15px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .header h1{
+        font-size:45px;
+    }
+
+    .header p{
+        font-size:17px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        🌿 Eloisa's Garden
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="dropdown.html">Home</a></li>
+        <li><a href="About us.html">About Us</a></li>
+
+        <li class="dropdown">
+            <a href="#">Our Products ▼</a>
+
+            <div class="dropdown-content">
+                <a href="Indoor.html">🌱 Indoor Plants</a>
+                <a href="outdoor.html">🌳 Outdoor Plants</a>
+            </div>
+
+        </li>
+
+        <li><a href="About Our Products.html" class="active">About Our Products</a></li>
+
+        <li><a href="Contact.html">Contact Us</a></li>
+
+    </ul>
+
+</div>
+
+<!-- HEADER -->
+<div class="header">
+
+    <h1>About Our Products</h1>
+
+    <p>
+        Our plants are carefully selected to bring freshness,
+        beauty, and relaxation into your homes, offices,
+        and gardens. Discover indoor and outdoor plants
+        that are both aesthetic and easy to maintain.
+    </p>
+
+</div>
+
+<!-- INDOOR -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>🌱 Indoor Plants</h2>
+        <p>Perfect plants for homes, offices, and relaxing spaces.</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Epipremnum Aureum (Golden Pothos).jpg">
+
+            <div class="card-content">
+                <h3>Epipremnum Aureum</h3>
+                <p>
+                    A beautiful low-maintenance indoor plant known for its
+                    air-purifying qualities and vibrant green leaves.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Dracaena Marginata.jpg">
+
+            <div class="card-content">
+                <h3>Dracaena Marginata</h3>
+                <p>
+                    An elegant indoor plant that improves air quality and
+                    adds a modern tropical look to any room.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Algaonema Commutatum.jpg">
+
+            <div class="card-content">
+                <h3>Aglaonema Commutatum</h3>
+                <p>
+                    A shade-loving decorative plant perfect for creating
+                    calm and aesthetic indoor environments.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Zamioculcas Zamiifolia (welcome plant).jpg">
+
+            <div class="card-content">
+                <h3>Zamioculcas Zamiifolia</h3>
+                <p>
+                    A hardy indoor plant that survives with minimal care,
+                    making it ideal for beginners.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- OUTDOOR -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>🌳 Outdoor Plants</h2>
+        <p>Beautiful plants for gardens, yards, and outdoor spaces.</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="rose.jpg">
+
+            <div class="card-content">
+                <h3>Rose Plant</h3>
+                <p>
+                    A classic flowering plant that adds beauty,
+                    fragrance, and elegance to gardens.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="sunflower.jpg">
+
+            <div class="card-content">
+                <h3>Sunflower</h3>
+                <p>
+                    A bright and cheerful plant that symbolizes
+                    positivity and happiness outdoors.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="bougainvillea.jpg">
+
+            <div class="card-content">
+                <h3>Bougainvillea</h3>
+                <p>
+                    A vibrant climbing plant perfect for fences,
+                    walls, and colorful outdoor decoration.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="hibiscus.jpg">
+
+            <div class="card-content">
+                <h3>Hibiscus</h3>
+                <p>
+                    A tropical flowering plant known for its
+                    large colorful blooms and garden beauty.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Eloisa's Garden | Bringing Nature Closer 🌿
+</footer>
+
+</body>
+</html>
