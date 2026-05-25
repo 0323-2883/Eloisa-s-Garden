@@ -461,6 +461,235 @@ h3{
     font-weight:600;
     box-shadow:0 4px 12px rgba(255,255,255,0.25);
 }
+    <!-- ADD THIS AT THE VERY BOTTOM OF YOUR CSS -->
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media(max-width:900px){
+
+    /* NAVBAR */
+    .navbar{
+        flex-direction:column;
+        gap:18px;
+        padding:18px 5%;
+    }
+
+    .logo{
+        font-size:25px;
+        text-align:center;
+    }
+
+    .nav-links{
+        justify-content:center;
+        gap:10px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+        padding:10px 14px;
+    }
+
+    /* AUTH BUTTONS */
+    .auth-buttons{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .auth-buttons button{
+        margin-left:0;
+    }
+
+    /* ACCOUNT INFO */
+    .account-info{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    /* TITLE */
+    h3{
+        font-size:42px;
+    }
+
+    .subtitle{
+        font-size:18px;
+        padding:0 10px;
+    }
+
+    /* SEARCH */
+    .search-box{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+
+    .search-box input{
+        width:100%;
+        max-width:500px;
+    }
+
+    .search-box button{
+        width:100%;
+        max-width:220px;
+    }
+
+    /* CARDS */
+    .cards{
+        grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    }
+
+    .card img{
+        height:230px;
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* NAVIGATION */
+    .navbar{
+        padding:16px 4%;
+    }
+
+    .nav-links{
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        width:100%;
+        text-align:center;
+    }
+
+    /* DROPDOWN */
+    .dropdown-content{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        display:none;
+        width:100%;
+        margin-top:8px;
+        border-radius:15px;
+    }
+
+    .dropdown:hover .dropdown-content{
+        display:block;
+    }
+
+    /* CONTAINER */
+    .container{
+        padding:30px 15px;
+    }
+
+    /* TITLE */
+    h3{
+        font-size:35px;
+        line-height:1.2;
+    }
+
+    .subtitle{
+        font-size:16px;
+        line-height:1.6;
+    }
+
+    /* SEARCH */
+    .search-box input{
+        width:100%;
+        font-size:15px;
+    }
+
+    .search-box button{
+        width:100%;
+    }
+
+    /* CARDS */
+    .cards{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .card h2{
+        font-size:20px;
+    }
+
+    .price{
+        font-size:20px;
+    }
+
+    .card button{
+        width:100%;
+    }
+
+    /* CHECKOUT BUTTON */
+    .checkout-btn{
+        width:100%;
+        max-width:320px;
+        text-align:center;
+        font-size:18px;
+    }
+
+    /* MODAL */
+    .modal-content{
+        width:92%;
+        margin:25% auto;
+        padding:25px;
+    }
+
+    /* TOAST */
+    #toast{
+        right:10px;
+        left:10px;
+        bottom:30px;
+        min-width:auto;
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+@media(max-width:480px){
+
+    .logo{
+        font-size:21px;
+    }
+
+    h3{
+        font-size:30px;
+    }
+
+    .subtitle{
+        font-size:15px;
+    }
+
+    .card img{
+        height:200px;
+    }
+
+    .checkout-btn{
+        padding:14px 20px;
+        font-size:16px;
+    }
+
+    .modal-content h2{
+        font-size:24px;
+    }
+}
 
 </style>
 </head>
