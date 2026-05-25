@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Confirmation</title>
+
+<style>
+body{
+    font-family:Arial, sans-serif;
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    padding:20px;
+}
+
+/* RECEIPT BOX */
+.box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    max-width:520px;
+    margin:auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    border:1px solid #dcedc8;
+}
+
+/* TITLE */
+h1{
+    color:#2e7d32;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+/* DETAILS */
+.item{
+    margin:8px 0;
+    padding:8px;
+    background:#f9fff9;
+    border-radius:8px;
+    border:1px solid #e0f2f1;
+}
+
+/* TOTAL */
+h2{
+    color:#1b5e20;
+    margin-top:15px;
+}
+
+/* BUTTONS */
+.button-link,
+.print-btn {
+    background:#2e7d32;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    display:inline-block;
+    text-decoration:none;
+    font-weight:bold;
+    margin-top:15px;
+    transition:0.3s;
+    border:none;
+    cursor:pointer;
+}
+
+.button-link:hover,
+.print-btn:hover {
+    background:#1b5e20;
+    transform:scale(1.05);
+}
+
+/* BUTTON CONTAINER */
+.btn-group{
+    display:flex;
+    justify-content:space-between;
+    max-width:520px;
+    margin:20px auto;
+    gap:10px;
+}
+
+/* PRINT STYLE */
+@media print {
+    body{
+        background:white;
+    }
+
+    .btn-group{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="receipt">
+
+    <h1>✅ Order Confirmed!</h1>
+
+    <div id="orderDetails"></div>
+
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-group">
+
+    <a href="dropdown.html" class="button-link">
+        🏠 Back to Home
+    </a>
+
+    <button class="print-btn" onclick="window.print()">
+        🖨 Print Receipt
+    </button>
+
+</div>
+
+<script>
+
+let order = JSON.parse(localStorage.getItem("orderData"));
+
+let container = document.getElementById("orderDetails");
+
+if(order){
+
+    let total = 0;
+    let itemsHTML = "";
+
+    order.cart.forEach(item=>{
+        total += item.price * item.qty;
+
+        itemsHTML += `
+            <div class="item">
+                🌿 ${item.name} - ₱${item.price} x ${item.qty}
+            </div>
+        `;
+    });
+
+    container.innerHTML = `
+        <p><b>Name:</b> ${order.name}</p>
+        <p><b>Address:</b> ${order.address}</p>
+        <p><b>Payment:</b> ${order.payment}</p>
+
+        <p><b>Date:</b> ${order.date}</p>
+        <p><b>Time:</b> ${order.time}</p>
+
+        <hr style="margin:15px 0;">
+
+        <h3>Items:</h3>
+        ${itemsHTML}
+
+        <h2>Total: ₱${total}</h2>
+    `;
+
+} else {
+    container.innerHTML = "<p>No order found.</p>";
+}
+
+</script>
+
+</body>
+</html>
