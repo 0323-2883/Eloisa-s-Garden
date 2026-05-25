@@ -250,6 +250,209 @@ body{
     .cart-header h1{
         font-size:32px;
     }
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media(max-width:900px){
+
+    body{
+        padding:15px;
+    }
+
+    .cart-container{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .cart-header h1{
+        font-size:34px;
+    }
+
+    .summary,
+    .cart-items{
+        padding:20px;
+    }
+
+    .item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .actions{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+        flex-wrap:wrap;
+    }
+
+    .actions button{
+        flex:1;
+        min-width:90px;
+    }
+
+    #gcashBox img,
+    #previewImg,
+    #bankPreview{
+        width:100%;
+        max-width:260px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media(max-width:768px){
+
+    body{
+        padding:12px;
+    }
+
+    .cart-header{
+        margin-bottom:20px;
+    }
+
+    .cart-header h1{
+        font-size:28px;
+        line-height:1.3;
+    }
+
+    .cart-header p{
+        font-size:14px;
+    }
+
+    .summary,
+    .cart-items{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .summary h2{
+        font-size:24px;
+    }
+
+    .total{
+        font-size:24px;
+    }
+
+    .time-box{
+        font-size:14px;
+    }
+
+    /* ITEMS */
+    .item{
+        padding:15px;
+        border-radius:14px;
+    }
+
+    .item-name{
+        font-size:16px;
+    }
+
+    .item-price{
+        font-size:14px;
+    }
+
+    /* BUTTONS */
+    .actions{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        gap:8px;
+    }
+
+    .actions button{
+        width:100%;
+        margin:0;
+        padding:10px;
+        font-size:14px;
+    }
+
+    /* INPUTS */
+    .checkout input,
+    .checkout select{
+        font-size:14px;
+        padding:12px;
+    }
+
+    /* PAYMENT BOX */
+    .payment-box{
+        padding:15px;
+    }
+
+    .bank-card{
+        padding:12px;
+    }
+
+    .bank-info{
+        font-size:14px;
+        line-height:1.6;
+        word-break:break-word;
+    }
+
+    /* QR IMAGE */
+    #gcashBox img{
+        width:100%;
+        max-width:220px;
+    }
+
+    #previewImg,
+    #bankPreview{
+        width:100%;
+        max-width:220px;
+    }
+
+    /* PLACE ORDER */
+    .place-order{
+        font-size:16px;
+        padding:13px;
+    }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media(max-width:480px){
+
+    body{
+        padding:10px;
+    }
+
+    .cart-header h1{
+        font-size:24px;
+    }
+
+    .summary h2{
+        font-size:22px;
+    }
+
+    .total{
+        font-size:22px;
+    }
+
+    .item{
+        padding:12px;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+    .actions button{
+        width:100%;
+    }
+
+    .payment-method label{
+        font-size:14px;
+    }
+
+    .bank-info{
+        font-size:13px;
+    }
+
+    .place-order{
+        font-size:15px;
+    }
 }
 </style>
 </head>
