@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eloisa's Garden</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-family:'Poppins', sans-serif;
+}
+
+/* BODY */
+body{
+    background:url('bgr.jpg') no-repeat center center/cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* LIGHT OVERLAY */
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.18)
+    );
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(46,125,50,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    flex-wrap:wrap;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+}
+
+.logo h1{
+    font-size:30px;
+    font-weight:700;
+}
+
+/* NAV LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+/* ACTIVE PAGE */
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:55px;
+    left:0;
+    background:white;
+    min-width:220px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:0;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+    color:#1b5e20;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* HERO SECTION */
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    color:white;
+}
+
+.hero-content{
+    max-width:850px;
+    animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+    font-size:75px;
+    line-height:1.1;
+    margin-bottom:20px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.4);
+}
+
+.hero span{
+    color:#9cffb1;
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.8;
+    margin-bottom:35px;
+    color:#f1f1f1;
+}
+
+/* BUTTONS */
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 30px;
+    border-radius:40px;
+    font-size:17px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn-green{
+    background:#4caf50;
+    color:white;
+}
+
+.btn-green:hover{
+    background:#2e7d32;
+    transform:scale(1.05);
+}
+
+.btn-white{
+    background:white;
+    color:#2e7d32;
+}
+
+.btn-white:hover{
+    background:#dcedc8;
+    transform:scale(1.05);
+}
+
+/* SECTION */
+.section{
+    background:#f8fff8;
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:50px;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#555;
+    font-size:18px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.card h3{
+    color:#2e7d32;
+    margin-bottom:10px;
+    font-size:23px;
+}
+
+.card p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:70px;
+}
+
+.feature-box{
+    background:white;
+    padding:35px 25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-box h3{
+    color:#2e7d32;
+    margin:15px 0;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:15px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        <h1>🌿 Eloisa's Garden</h1>
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="dropdown.html" class="active">Home</a></li>
+
+        <li><a href="About us.html">About Us</a></li>
+
+        <!-- DROPDOWN -->
+        <li class="dropdown">
+            <a href="#">Our Products ▼</a>
+
+            <div class="dropdown-content">
+                <a href="Indoor.html">🌱 Indoor Plants</a>
+                <a href="outdoor.html">🌳 Outdoor Plants</a>
+            </div>
+        </li>
+
+       <li><a href="About Our Products.html">About Our Products</a></li>
+
+        <li><a href="Contact.html">Contact Us</a></li>
+
+    </ul>
+
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Bring Nature <span>Closer</span> To Your Home</h1>
+
+        <p>
+            Welcome to Eloisa's Garden — your peaceful place for beautiful
+            indoor and outdoor plants. We help bring freshness, happiness,
+            and natural beauty into every home and garden.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="Indoor.html" class="btn btn-green">Shop Indoor Plants</a>
+
+            <a href="outdoor.html" class="btn btn-white">Explore Outdoor Plants</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FAVORITE PLANTS -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>Our Favorite Plants</h2>
+        <p>
+            Discover our most loved plants perfect for homes, offices,
+            and gardens.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Epipremnum Aureum (Golden Pothos).jpg">
+
+            <div class="card-content">
+                <h3>Epipremnum Aureum</h3>
+                <p>
+                    A beautiful tropical indoor plant with vibrant green leaves
+                    that instantly freshens any room.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Dracaena Marginata.jpg">
+
+            <div class="card-content">
+                <h3>Dracaena Marginata</h3>
+                <p>
+                    A strong and elegant plant known for its air-purifying
+                    qualities and low maintenance care.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Algaonema Commutatum.jpg">
+
+            <div class="card-content">
+                <h3>Aglaonema Commutatum</h3>
+                <p>
+                    A stylish shade-loving plant with soft green leaves perfect
+                    for relaxing indoor spaces.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="C:\Users\Admin\Desktop\Webpage Images\Zamioculcas Zamiifolia (welcome plant).jpg">
+
+            <div class="card-content">
+                <h3>Zamioculcas Zamiifolia</h3>
+                <p>
+                    A modern low-maintenance plant that survives with little
+                    water and adds elegance anywhere.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+
+        <div class="feature-box">
+            <h3>🌿 Fresh Plants</h3>
+            <p>
+                Healthy and high-quality plants carefully grown with love and care.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🚚 Easy Ordering</h3>
+            <p>
+                Simple and convenient ordering process for all customers.
+            </p>
+        </div>
+
+        <div class="feature-box">
+            <h3>💚 Nature Inspired</h3>
+            <p>
+                Bringing peace, beauty, and freshness into every home.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Eloisa's Garden | Love Plants Everyday 🌱
+</footer>
+
+</body>
+</html>

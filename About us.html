@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Eloisa's Garden</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-family:'Poppins', sans-serif;
+}
+
+/* BODY */
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5fff5;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    backdrop-filter:blur(10px);
+    background:rgba(20,50,20,0.75);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+}
+
+.logo h1{
+    font-size:30px;
+    font-weight:700;
+}
+
+/* NAV LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:50px;
+    left:0;
+    background:white;
+    min-width:220px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:0;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+    color:#1b5e20;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* SECTION */
+.section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 8%;
+}
+
+/* HERO */
+.hero{
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1600&q=80');
+
+    background-size:cover;
+    background-position:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content{
+    max-width:850px;
+    animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+    font-size:75px;
+    margin-bottom:20px;
+    text-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.8;
+    color:#f1f1f1;
+}
+
+/* STORY SECTIONS */
+.story{
+    background:linear-gradient(135deg,#f1fff1,#d7f5d7);
+}
+
+.story:nth-child(even){
+    background:linear-gradient(135deg,#dff5df,#c2ebc2);
+}
+
+/* CARD */
+.card{
+    max-width:950px;
+    background:rgba(255,255,255,0.92);
+    padding:45px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h2{
+    color:#2e7d32;
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#388e3c;
+    margin-top:20px;
+    margin-bottom:10px;
+    font-size:25px;
+}
+
+.card p{
+    line-height:2;
+    color:#444;
+    font-size:18px;
+}
+
+/* FINAL SECTION */
+.final{
+    background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80');
+
+    background-size:cover;
+    background-position:center;
+    text-align:center;
+    color:white;
+}
+
+.final-content{
+    max-width:800px;
+}
+
+.final h2{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.final p{
+    font-size:22px;
+    line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:22px;
+    font-size:15px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .card{
+        padding:30px;
+    }
+
+    .card h2{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        <h1>🌿 Eloisa's Garden</h1>
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="dropdown.html">Home</a></li>
+
+       <li>
+    <a href="About us.html" class="active">
+        About Us
+    </a>
+</li>
+
+        <li class="dropdown">
+
+            <a href="#">
+                Our Products ▼
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="Indoor.html">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="outdoor.html">
+                    🌳 Outdoor Plants
+                </a>
+
+            </div>
+
+        </li>
+
+        <li><a href="About Our Products.html">About Our Products</a></li>
+
+        <li><a href="Contact.html">Contact Us</a></li>
+
+    </ul>
+
+</div>
+
+<!-- HERO -->
+<section class="section hero">
+
+    <div class="hero-content">
+        <h1>About Eloisa’s Garden</h1>
+
+        <p>
+            A peaceful journey into nature, growth, and greenery.
+            We believe every plant brings beauty, calmness,
+            and life into every home.
+        </p>
+    </div>
+
+</section>
+
+<!-- STORY 1 -->
+<section class="section story">
+
+    <div class="card">
+
+        <h2>🌿 Our Beginning</h2>
+
+        <p>
+            Eloisa’s Garden was created with a simple vision —
+            to bring people closer to nature and create a peaceful
+            space filled with life and greenery.
+        </p>
+
+        <p>
+            Located in Calauan, Laguna, it started as a small
+            plant collection and slowly grew into a beautiful
+            sanctuary for plant lovers and garden enthusiasts.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- STORY 2 -->
+<section class="section story">
+
+    <div class="card">
+
+        <h2>🌸 What We Grow</h2>
+
+        <p>
+            We cultivate a wide variety of plants including
+            ornamental flowers, indoor plants, outdoor plants,
+            herbs, and fruit-bearing trees.
+        </p>
+
+        <p>
+            Every plant is carefully nurtured with dedication
+            and love to ensure healthy growth before reaching
+            our customers.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- STORY 3 -->
+<section class="section story">
+
+    <div class="card">
+
+        <h2>🌱 Mission & Vision</h2>
+
+        <h3>Mission</h3>
+
+        <p>
+            To inspire people to appreciate nature by providing
+            affordable, healthy, and beautiful plants that bring
+            comfort and happiness.
+        </p>
+
+        <h3>Vision</h3>
+
+        <p>
+            To become a trusted garden destination that promotes
+            greener, healthier, and more peaceful communities.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- STORY 4 -->
+<section class="section story">
+
+    <div class="card">
+
+        <h2>🍃 Why Choose Us</h2>
+
+        <p>
+            We don’t just sell plants — we help people create
+            their own relaxing green spaces at home.
+        </p>
+
+        <p>
+            Every plant is cared for with passion, ensuring
+            quality, beauty, and long-lasting growth for your
+            home, office, or garden.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+
+    <div class="final-content">
+
+        <h2>Grow With Us 🌿</h2>
+
+        <p>
+            At Eloisa’s Garden, every plant tells a story
+            of life, peace, growth, and natural beauty.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Eloisa's Garden | Bringing Nature Closer To You 🌱
+</footer>
+
+</body>
+</html>

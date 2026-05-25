@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outdoor Plants</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    text-decoration:none;
+}
+
+/* BODY */
+body{
+    background:url("pexels-masoodaslami-19248559.jpg") no-repeat center center/cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* LIGHTER OVERLAY */
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.18)
+    );
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(46,125,50,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    flex-wrap:wrap;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-size:30px;
+    font-weight:700;
+    text-shadow:0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* NAV LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:50px;
+    left:0;
+    background:white;
+    min-width:230px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.18);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:0;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+    color:#1b5e20;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* CART COUNT */
+#cartCount{
+    background:#ff5252;
+    color:white;
+    font-size:11px;
+    padding:3px 7px;
+    border-radius:50%;
+    margin-left:5px;
+}
+
+/* AUTH BUTTONS */
+.auth-buttons{
+    display:flex;
+    align-items:center;
+}
+
+.auth-buttons button{
+    background:rgba(255,255,255,0.92);
+    color:#2e7d32;
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    margin-left:10px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    backdrop-filter:blur(5px);
+}
+
+.auth-buttons button:hover{
+    background:white;
+    transform:translateY(-2px);
+}
+
+/* ACCOUNT INFO */
+.account-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,0.92);
+    color:#2e7d32;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:600;
+    backdrop-filter:blur(5px);
+}
+
+/* LOGOUT BUTTON */
+.logout-btn{
+    background:#e53935;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#c62828;
+    transform:scale(1.05);
+}
+
+/* CONTAINER */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 30px;
+}
+
+/* TITLE */
+h3{
+    text-align:center;
+    color:white;
+    font-size:55px;
+    margin-bottom:10px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.25);
+}
+
+.subtitle{
+    text-align:center;
+    color:#ffffff;
+    margin-bottom:35px;
+    font-size:20px;
+    text-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* SEARCH */
+.search-box{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.search-box input{
+    width:50%;
+    padding:14px 18px;
+    border-radius:40px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.search-box button{
+    padding:14px 22px;
+    border:none;
+    border-radius:40px;
+    background:#43a047;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(67,160,71,0.3);
+}
+
+.search-box button:hover{
+    background:#2e7d32;
+    transform:scale(1.05);
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.92);
+    border-radius:22px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    backdrop-filter:blur(8px);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.16);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+.card h2{
+    color:#2e7d32;
+    margin:14px 0;
+    font-size:22px;
+}
+
+.price{
+    font-size:22px;
+    font-weight:bold;
+    color:#1b5e20;
+}
+
+.card button{
+    margin-top:12px;
+    padding:11px 18px;
+    background:#43a047;
+    color:white;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(67,160,71,0.25);
+}
+
+.card button:hover{
+    background:#2e7d32;
+    transform:scale(1.05);
+}
+
+/* CHECKOUT BUTTON */
+.checkout-container{
+    text-align:center;
+    margin-top:45px;
+}
+
+.checkout-btn{
+    display:inline-block;
+    background:#ff9800;
+    color:white;
+    padding:15px 30px;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(255,152,0,0.3);
+}
+
+.checkout-btn:hover{
+    background:#e68900;
+    transform:scale(1.05);
+}
+
+/* TOAST */
+#toast{
+    visibility:hidden;
+    min-width:220px;
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    border-radius:10px;
+    padding:14px;
+    position:fixed;
+    right:20px;
+    bottom:80px;
+    z-index:1000;
+    opacity:0;
+    transition:0.4s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+#toast.show{
+    visibility:visible;
+    opacity:1;
+    bottom:100px;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:2000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(4px);
+}
+
+.modal-content{
+    background:rgba(255,255,255,0.96);
+    width:350px;
+    margin:8% auto;
+    padding:30px;
+    border-radius:22px;
+    text-align:center;
+    position:relative;
+    animation:fadeIn 0.4s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+}
+
+.modal-content h2{
+    color:#2e7d32;
+    margin-bottom:20px;
+}
+
+.modal-content input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #dcdcdc;
+    border-radius:12px;
+    outline:none;
+}
+
+.modal-content button{
+    width:100%;
+    padding:12px;
+    background:#43a047;
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.modal-content button:hover{
+    background:#2e7d32;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:24px;
+    cursor:pointer;
+    color:red;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .search-box input{
+        width:90%;
+    }
+
+    h3{
+        font-size:40px;
+    }
+/* ACTIVE PAGE */
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+</style>
+</head>
+
+<body>
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="logo">
+        🌿 Eloisa's Garden
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="dropdown.html">
+                Home
+            </a>
+        </li>
+
+        <!-- DROPDOWN -->
+        <li class="dropdown">
+
+            <a href="#">
+                Our Plants ▼
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="Indoor.html">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="outdoor.html"class="active">
+                    🌳 Outdoor Plants
+                </a>
+
+            </div>
+
+        </li>
+
+        <li>
+            <a href="#"
+            onclick="openProfile(event)">
+                👤 Profile
+            </a>
+        </li>
+
+        <li>
+            <a href="cart.html"
+            onclick="openCart(event)">
+
+                🛒 Cart
+
+                <span id="cartCount">
+                    0
+                </span>
+
+            </a>
+        </li>
+
+    </ul>
+
+    <!-- SIGN IN / SIGN UP -->
+    <div class="auth-buttons"
+    id="authButtons">
+
+        <button onclick="openModal('login')">
+            Sign In
+        </button>
+
+        <button onclick="openModal('signup')">
+            Sign Up
+        </button>
+
+    </div>
+
+    <!-- ACCOUNT INFO -->
+    <div class="account-info"
+    id="accountInfo"
+    style="display:none;">
+
+        👤 <span id="accountName"></span>
+
+        <button onclick="logout()"
+        class="logout-btn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h3>🌿 Outdoor Plants</h3>
+
+    <p class="subtitle">
+        Perfect plants for gardens, yards, and open spaces
+    </p>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input type="text"
+        id="searchInput"
+        placeholder="🔍 Search plants...">
+
+        <button onclick="searchPlants()">
+            Search
+        </button>
+
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card">
+            <img src="rose.jpg">
+            <h2>Rose Plant</h2>
+            <p class="price">₱150</p>
+            <button onclick="addToCart('Rose Plant',150)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="sunflower.jpg">
+            <h2>Sunflower</h2>
+            <p class="price">₱180</p>
+            <button onclick="addToCart('Sunflower',180)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="bougainvillea.jpg">
+            <h2>Bougainvillea</h2>
+            <p class="price">₱200</p>
+            <button onclick="addToCart('Bougainvillea',200)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="card">
+            <img src="hibiscus.jpg">
+            <h2>Hibiscus</h2>
+            <p class="price">₱170</p>
+            <button onclick="addToCart('Hibiscus',170)">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+
+    <!-- CHECKOUT -->
+    <div class="checkout-container">
+
+        <a href="cart.html"
+        class="checkout-btn"
+        id="checkoutBtn">
+
+            🛒 Checkout
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- SOUND -->
+<audio id="addSound" src="click.mp3"></audio>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal('login')">
+            &times;
+        </span>
+
+        <h2>Sign In</h2>
+
+        <input type="text"
+        id="loginUser"
+        placeholder="Username">
+
+        <input type="password"
+        id="loginPass"
+        placeholder="Password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal('signup')">
+            &times;
+        </span>
+
+        <h2>Create Account</h2>
+
+        <input type="text"
+        id="signupUser"
+        placeholder="Username">
+
+        <input type="password"
+        id="signupPass"
+        placeholder="Password">
+
+        <button onclick="signup()">
+            Create Account
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* UPDATE CART COUNT */
+function updateCartCount(){
+
+    let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    let totalItems = 0;
+
+    cart.forEach(item => {
+        totalItems += item.qty;
+    });
+
+    document.getElementById("cartCount")
+    .innerText = totalItems;
+}
+
+/* ADD TO CART */
+function addToCart(name, price){
+
+    let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existing =
+    cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.qty += 1;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+    }
+
+    localStorage.setItem("cart",
+    JSON.stringify(cart));
+
+    updateCartCount();
+
+    let sound =
+    document.getElementById("addSound");
+
+    sound.currentTime = 0;
+    sound.play();
+
+    showToast(name + " added to cart ✔");
+}
+
+/* TOAST */
+function showToast(message){
+
+    let toast =
+    document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.className = "show";
+
+    setTimeout(() => {
+
+        toast.className =
+        toast.className.replace("show","");
+
+    },2000);
+}
+
+/* SEARCH */
+function searchPlants(){
+
+    let input =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    let cards =
+    document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let title =
+        card.querySelector("h2")
+        .innerText.toLowerCase();
+
+        if(title.includes(input)){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+        }
+    });
+}
+
+/* ENTER SEARCH */
+document.getElementById("searchInput")
+.addEventListener("keyup", function(event){
+
+    if(event.key === "Enter"){
+
+        searchPlants();
+    }
+});
+
+/* OPEN PROFILE ONLY IF LOGGED IN */
+function openProfile(event){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    if(loggedIn === "true"){
+
+        window.location.href = "profile.html";
+
+    }else{
+
+        event.preventDefault();
+
+        alert("Please Sign In or Sign Up first.");
+
+        openModal("login");
+    }
+}
+
+/* OPEN MODAL */
+function openModal(type){
+
+    if(type === "login"){
+
+        document.getElementById("loginModal")
+        .style.display = "block";
+    }
+
+    if(type === "signup"){
+
+        document.getElementById("signupModal")
+        .style.display = "block";
+    }
+}
+
+/* CLOSE MODAL */
+function closeModal(type){
+
+    if(type === "login"){
+
+        document.getElementById("loginModal")
+        .style.display = "none";
+    }
+
+    if(type === "signup"){
+
+        document.getElementById("signupModal")
+        .style.display = "none";
+    }
+}
+
+/* SIGN UP */
+function signup(){
+
+    let username =
+    document.getElementById("signupUser").value;
+
+    let password =
+    document.getElementById("signupPass").value;
+
+    if(username === "" || password === ""){
+
+        alert("Please fill all fields!");
+
+        return;
+    }
+
+    let user = {
+
+        username: username,
+        password: password
+    };
+
+    localStorage.setItem(
+        "userAccount",
+        JSON.stringify(user)
+    );
+
+    alert("Account created successfully!");
+
+    closeModal("signup");
+}
+
+/* LOGIN */
+function login(){
+
+    let username =
+    document.getElementById("loginUser").value;
+
+    let password =
+    document.getElementById("loginPass").value;
+
+    let savedUser =
+    JSON.parse(localStorage.getItem("userAccount"));
+
+    if(!savedUser){
+
+        alert("No account found. Please sign up first.");
+
+        return;
+    }
+
+    if(username === savedUser.username &&
+       password === savedUser.password){
+
+        localStorage.setItem("loggedIn","true");
+
+        alert("Login successful!");
+
+        closeModal("login");
+
+        checkLoginStatus();
+
+    }else{
+
+        alert("Incorrect username or password.");
+    }
+}
+
+/* CHECK LOGIN STATUS */
+function checkLoginStatus(){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    let user =
+    JSON.parse(localStorage.getItem("userAccount"));
+
+    if(loggedIn === "true" && user){
+
+        document.getElementById("authButtons")
+        .style.display = "none";
+
+        document.getElementById("accountInfo")
+        .style.display = "flex";
+
+        document.getElementById("accountName")
+        .innerText = user.username;
+
+    }else{
+
+        document.getElementById("authButtons")
+        .style.display = "flex";
+
+        document.getElementById("accountInfo")
+        .style.display = "none";
+    }
+}
+
+/* LOGOUT */
+function logout(){
+
+    localStorage.removeItem("loggedIn");
+
+    alert("Logged out successfully!");
+
+    checkLoginStatus();
+}
+
+/* CHECKOUT LOGIN */
+document.getElementById("checkoutBtn")
+.addEventListener("click", function(event){
+
+    let loggedIn =
+    localStorage.getItem("loggedIn");
+
+    if(loggedIn !== "true"){
+
+        event.preventDefault();
+
+        alert("Please Sign In or Sign Up first before checkout.");
+
+        openModal("login");
+    }
+});
+
+/* RUN */
+updateCartCount();
+checkLoginStatus();
+
+</script>
+
+</body>
+</html>

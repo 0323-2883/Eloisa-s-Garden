@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eloisa's Garden - Contact Information</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:url('bgr.jpg') no-repeat center center/cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* LIGHT OVERLAY */
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.18)
+    );
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(46,125,50,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    flex-wrap:wrap;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-size:30px;
+    font-weight:700;
+    text-shadow:0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* NAV LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:55px;
+    left:0;
+    background:white;
+    min-width:220px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:0;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+    color:#1b5e20;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* CONTAINER */
+.container{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    padding:120px 20px 50px;
+    animation:fadeIn 1s ease;
+}
+
+/* TITLES */
+.container h2{
+    font-size:50px;
+    color:white;
+    margin-bottom:15px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.25);
+}
+
+.container p{
+    color:#f5f5f5;
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:25px;
+    text-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* BUTTON */
+button{
+    background:#43a047;
+    color:white;
+    border:none;
+    padding:16px 34px;
+    font-size:18px;
+    font-weight:600;
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(67,160,71,0.3);
+}
+
+button:hover{
+    background:#2e7d32;
+    transform:scale(1.05);
+}
+
+/* CONTACT BOX */
+#contactBox{
+    display:none;
+    margin-top:35px;
+    background:rgba(255,255,255,0.94);
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    backdrop-filter:blur(10px);
+    animation:fadeIn 0.8s ease;
+}
+
+#contactBox h2{
+    color:#1b5e20;
+    margin-bottom:20px;
+    font-size:35px;
+    text-shadow:none;
+}
+
+#contactBox p{
+    color:#444;
+    font-size:20px;
+    margin:14px 0;
+    text-shadow:none;
+}
+
+/* FOOTER */
+footer{
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:60px;
+    font-size:15px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .container h2{
+        font-size:38px;
+    }
+
+    .container p{
+        font-size:18px;
+    }
+/* ACTIVE PAGE */
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        🌿 Eloisa's Garden
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="dropdown.html">Home</a></li>
+
+        <li><a href="About us.html">About Us</a></li>
+
+        <li class="dropdown">
+
+            <a href="#">
+                Our Products ▼
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="Indoor.html">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="outdoor.html">
+                    🌳 Outdoor Plants
+                </a>
+
+            </div>
+
+        </li>
+
+        <li><a href="About Our Products.html">About Our Products</a></li>
+
+        <li><a href="Contact.html">Contact Us</a></li>
+
+    </ul>
+
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h2>
+        🌿 Contact Us
+    </h2>
+
+    <p>
+        Need help? Click the button below to view our contact information.
+    </p>
+
+    <button onclick="showContact(this)">
+        Open Contact Info
+    </button>
+
+    <!-- CONTACT BOX -->
+    <div id="contactBox">
+
+        <h2>
+            Eloisa's Garden Contact Details
+        </h2>
+
+        <p>
+            📞 Phone: 0912-345-6789
+        </p>
+
+        <p>
+            📧 Email: Eloisasgarden@gmail.com
+        </p>
+
+        <p>
+            📍 Address: Calauan, Laguna, Philippines
+        </p>
+
+        <p>
+            🌐 Facebook: Eloisa's Garden Official
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Eloisa's Garden | We Love Plants 🌱
+</footer>
+
+<script>
+
+function showContact(btn){
+
+    btn.innerHTML = "Loading...";
+    btn.disabled = true;
+
+    setTimeout(function(){
+
+        document.getElementById("contactBox").style.display = "block";
+
+        btn.innerHTML = "Contact Opened ✔";
+        btn.style.background = "#2e7d32";
+
+    },1500);
+}
+
+</script>
+
+</body>
+</html>

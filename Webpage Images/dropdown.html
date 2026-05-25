@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///C:/Users/Admin/Desktop/About%20Our%20Products.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Our Plants | Eloisa's Garden</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+<link href="./dropdown_files/css2" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:url('bgr.jpg') no-repeat center center/cover;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* LIGHT OVERLAY */
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.18)
+    );
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(46,125,50,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    flex-wrap:wrap;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    font-size:30px;
+    font-weight:700;
+}
+
+/* NAV LINKS */
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    color:white;
+    font-size:16px;
+    font-weight:500;
+    padding:10px 16px;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.nav-links a:hover{
+    background:white;
+    color:#2e7d32;
+    transform:translateY(-2px);
+}
+
+/* DROPDOWN */
+.dropdown-content{
+    position:absolute;
+    top:55px;
+    left:0;
+    background:white;
+    min-width:220px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:0.3s;
+}
+
+.dropdown-content a{
+    display:block;
+    color:#2e7d32;
+    padding:14px 18px;
+    border-radius:0;
+}
+
+.dropdown-content a:hover{
+    background:#e8f5e9;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:90px 20px 40px;
+    color:white;
+}
+
+.header h1{
+    font-size:60px;
+    margin-bottom:15px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.25);
+}
+
+.header p{
+    font-size:20px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* PRODUCT SECTION */
+.products{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    padding-bottom:70px;
+}
+
+/* CATEGORY TITLE */
+.category-title{
+    color:white;
+    font-size:42px;
+    margin:40px 0 25px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.25);
+}
+
+/* GLASS CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.18);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+    color:white;
+}
+
+.card-content h2{
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.card-content p{
+    font-size:15px;
+    line-height:1.8;
+    color:#f1f1f1;
+}
+
+.price{
+    margin-top:18px;
+    font-size:24px;
+    font-weight:700;
+    color:#c8ffcc;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    color:white;
+    padding:25px;
+    font-size:15px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .header h1{
+        font-size:42px;
+    }
+
+    .header p{
+        font-size:17px;
+    }
+
+    .category-title{
+        font-size:32px;
+    }
+/* ACTIVE PAGE */
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <div class="logo">
+        🌿 Eloisa's Garden
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="file:///C:/Users/Admin/Desktop/dropdown.html">Home</a></li>
+
+        <li><a href="file:///C:/Users/Admin/Desktop/About%20us.html">About Us</a></li>
+
+        <li class="dropdown">
+
+            <a href="file:///C:/Users/Admin/Desktop/About%20Our%20Products.html#">
+                Our Products ▼
+            </a>
+
+            <div class="dropdown-content">
+
+                <a href="file:///C:/Users/Admin/Desktop/Indoor.html">
+                    🌱 Indoor Plants
+                </a>
+
+                <a href="file:///C:/Users/Admin/Desktop/outdoor.html">
+                    🌳 Outdoor Plants
+                </a>
+
+            </div>
+
+        </li>
+
+        <li><a href="file:///C:/Users/Admin/Desktop/About%20Our%20Products.html" class="active">About Our Products</a></li>
+
+        <li><a href="file:///C:/Users/Admin/Desktop/Contact.html">Contact Us</a></li>
+
+    </ul>
+
+</div>
+
+<!-- HEADER -->
+<section class="header">
+
+    <h1>
+        🌿 About Our Plants
+    </h1>
+
+    <p>
+        Discover beautiful indoor and outdoor plants carefully selected
+        to bring freshness, elegance, and natural beauty into your home
+        and garden.
+    </p>
+
+</section>
+
+<!-- PRODUCTS -->
+<section class="products">
+
+<!-- INDOOR PLANTS -->
+<h2 class="category-title">
+    🌱 Indoor Plants
+</h2>
+
+<div class="cards">
+
+    <div class="card">
+
+        <img src="./dropdown_files/Epipremnum Aureum (Golden Pothos).jpg">
+
+        <div class="card-content">
+
+            <h2>Epipremnum Aureum</h2>
+
+            <p>
+                A beautiful tropical indoor plant with vibrant green leaves
+                that instantly freshens any room and creates a relaxing atmosphere.
+            </p>
+
+            <div class="price">
+                ₱150
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Dracaena Marginata.jpg">
+
+        <div class="card-content">
+
+            <h2>Dracaena Marginata</h2>
+
+            <p>
+                A stylish air-purifying plant with long elegant leaves that
+                adds freshness and modern beauty to indoor spaces.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Algaonema Commutatum.jpg">
+
+        <div class="card-content">
+
+            <h2>Algaonema Commutatum</h2>
+
+            <p>
+                A low-maintenance shade-loving plant perfect for homes and
+                offices because of its soft green attractive foliage.
+            </p>
+
+            <div class="price">
+                ₱170
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Zamioculcas Zamiifolia (welcome plant).jpg">
+
+        <div class="card-content">
+
+            <h2>Zamioculcas Zamiifolia</h2>
+
+            <p>
+                Also known as the welcome plant, this elegant indoor plant
+                survives with little care while maintaining its glossy beauty.
+            </p>
+
+            <div class="price">
+                ₱220
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Spathiphyllum Wallisii .jpg">
+
+        <div class="card-content">
+
+            <h2>Spathiphyllum Wallisii</h2>
+
+            <p>
+                Commonly called Peace Lily, this plant produces elegant white
+                blooms and helps improve indoor air quality.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Ficus elastica (rubber tree) .jpg">
+
+        <div class="card-content">
+
+            <h2>Ficus Elastica Rubber Tree</h2>
+
+            <p>
+                A modern decorative plant with thick glossy leaves that gives
+                a luxurious tropical feel to indoor environments.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Snake plant.jpg">
+
+        <div class="card-content">
+
+            <h2>Snake Plant</h2>
+
+            <p>
+                One of the easiest indoor plants to maintain, known for its
+                upright leaves and strong air-purifying qualities.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Monstera deliciosa.jpg">
+
+        <div class="card-content">
+
+            <h2>Monstera Deliciosa</h2>
+
+            <p>
+                Famous for its split tropical leaves, this plant adds a fresh
+                and trendy natural aesthetic to modern interiors.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Excoecaria cochinchinensis (Picara) (2).jpg">
+
+        <div class="card-content">
+
+            <h2>Excoecaria Cochinchinensis Picara</h2>
+
+            <p>
+                A unique ornamental plant with striking colorful foliage
+                that adds character and elegance to indoor spaces.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="./dropdown_files/Alocasia Black Velvet (2).jpg">
+
+        <div class="card-content">
+
+            <h2>Alocasia Black Velvet</h2>
+
+            <p>
+                A luxurious plant with dark velvety leaves and silver veins,
+                perfect for stylish and modern plant collections.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- OUTDOOR PLANTS -->
+<h2 class="category-title">
+    🌳 Outdoor Plants
+</h2>
+
+<div class="cards">
+
+    <div class="card">
+
+        <img src="file:///C:/Users/Admin/Desktop/rose.jpg">
+
+        <div class="card-content">
+
+            <h2>Rose Plant</h2>
+
+            <p>
+                A timeless flowering plant loved for its elegant petals,
+                pleasant fragrance, and romantic beauty in gardens.
+            </p>
+
+            <div class="price">
+                ₱150
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="file:///C:/Users/Admin/Desktop/sunflower.jpg">
+
+        <div class="card-content">
+
+            <h2>Sunflower</h2>
+
+            <p>
+                A bright and cheerful outdoor flower known for following
+                sunlight and bringing happiness to any garden space.
+            </p>
+
+            <div class="price">
+                ₱180
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="file:///C:/Users/Admin/Desktop/bougainvillea.jpg">
+
+        <div class="card-content">
+
+            <h2>Bougainvillea</h2>
+
+            <p>
+                A colorful flowering plant with vibrant blooms that thrives
+                beautifully under sunlight and outdoor conditions.
+            </p>
+
+            <div class="price">
+                ₱200
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <img src="file:///C:/Users/Admin/Desktop/hibiscus.jpg">
+
+        <div class="card-content">
+
+            <h2>Hibiscus</h2>
+
+            <p>
+                A tropical flowering plant admired for its large colorful
+                blossoms that add elegance and freshness outdoors.
+            </p>
+
+            <div class="price">
+                ₱170
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Eloisa's Garden | Love Plants Everyday 🌱
+</footer>
+
+
+</body></html>
