@@ -727,6 +727,26 @@ footer{
 <footer>
     © 2026 Eloisa's Garden | Love Plants Everyday 🌱
 </footer>
+<!-- ADD THIS BEFORE </body> -->
 
+<script>
+
+/* MOBILE MENU */
+function toggleMenu(){
+
+    document.getElementById("navMenu")
+    .classList.toggle("show");
+}
+
+/* DROPDOWN */
+function toggleDropdown(event){
+
+    event.preventDefault();
+
+    document.getElementById("dropdownMenu")
+    .classList.toggle("show");
+}
+
+</script>
 </body>
 </html>
