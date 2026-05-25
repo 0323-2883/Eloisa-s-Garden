@@ -7,6 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -29,21 +30,6 @@ body{
     overflow-x:hidden;
 }
 
-/* LIGHT OVERLAY */
-body::before{
-    content:'';
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:linear-gradient(
-        rgba(255,255,255,0.08),
-        rgba(0,0,0,0.18)
-    );
-    z-index:-1;
-}
-
 /* NAVBAR */
 .navbar{
     width:100%;
@@ -51,15 +37,13 @@ body::before{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    position:sticky;
+    position:fixed;
     top:0;
+    left:0;
     z-index:1000;
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    background:rgba(46,125,50,0.45);
-    border-bottom:1px solid rgba(255,255,255,0.25);
-    box-shadow:0 4px 15px rgba(0,0,0,0.12);
-    flex-wrap:wrap;
+    backdrop-filter:blur(10px);
+    background:rgba(20,50,20,0.75);
+    border-bottom:1px solid rgba(255,255,255,0.2);
 }
 
 /* LOGO */
@@ -75,13 +59,20 @@ body::before{
     font-weight:700;
 }
 
+/* MENU BUTTON */
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+
 /* NAV LINKS */
 .nav-links{
     list-style:none;
     display:flex;
     align-items:center;
     gap:15px;
-    flex-wrap:wrap;
 }
 
 .nav-links li{
@@ -95,7 +86,13 @@ body::before{
     padding:10px 16px;
     border-radius:30px;
     transition:0.3s ease;
-    display:block;
+}
+
+.nav-links a.active{
+    background:white;
+    color:#2e7d32;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(255,255,255,0.25);
 }
 
 .nav-links a:hover{
@@ -104,18 +101,10 @@ body::before{
     transform:translateY(-2px);
 }
 
-/* ACTIVE PAGE */
-.nav-links a.active{
-    background:white;
-    color:#2e7d32;
-    font-weight:600;
-    box-shadow:0 4px 12px rgba(255,255,255,0.25);
-}
-
 /* DROPDOWN */
 .dropdown-content{
     position:absolute;
-    top:55px;
+    top:50px;
     left:0;
     background:white;
     min-width:220px;
@@ -275,124 +264,153 @@ footer{
     }
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-
-    .navbar{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .nav-links{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .hero h1{
-        font-size:50px;
-    }
-
-    .hero p{
-        font-size:18px;
-    }
-
-    .card{
-        padding:30px;
-    }
-
-    .card h2{
-        font-size:32px;
-    }
-
 /* MOBILE RESPONSIVE */
 @media(max-width:768px){
 
-    body{
-        padding:12px;
+    .navbar{
+        padding:15px 5%;
+        flex-wrap:wrap;
     }
 
-    /* TOPBAR */
-    .topbar{
+    .logo h1{
+        font-size:24px;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        width:100%;
+        display:none;
         flex-direction:column;
-        align-items:flex-start;
+        gap:10px;
+        margin-top:15px;
+        background:rgba(20,50,20,0.95);
+        padding:20px;
+        border-radius:20px;
     }
 
-    .topbar h1{
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+        display:block;
+        width:100%;
+        text-align:center;
+        padding:14px;
+        font-size:15px;
+    }
+
+    /* DROPDOWN */
+    .dropdown-content{
+        position:static;
+        opacity:1;
+        visibility:visible;
+        transform:none;
+        display:none;
+        width:100%;
+        margin-top:10px;
+        border-radius:15px;
+        box-shadow:none;
+    }
+
+    .dropdown-content.show{
+        display:block;
+    }
+
+    .dropdown-content a{
+        text-align:center;
+    }
+
+    /* HERO */
+    .hero{
+        padding-top:150px;
+    }
+
+    .hero h1{
+        font-size:38px;
+        line-height:1.2;
+    }
+
+    .hero p{
+        font-size:16px;
+        line-height:1.7;
+    }
+
+    /* SECTIONS */
+    .section{
+        padding:70px 5%;
+        min-height:auto;
+    }
+
+    /* CARDS */
+    .card{
+        padding:25px 18px;
+    }
+
+    .card h2{
         font-size:28px;
     }
 
-    /* STATS */
-    .stats-grid{
-        grid-template-columns:1fr;
+    .card h3{
+        font-size:21px;
     }
 
-    /* SEARCH */
-    .search-box{
-        flex-direction:column;
+    .card p{
+        font-size:15px;
+        line-height:1.8;
     }
 
-    .search-box input,
-    .search-box button{
-        width:100%;
+    /* FINAL */
+    .final h2{
+        font-size:32px;
     }
 
-    /* ORDER CARD */
-    .order{
-        padding:18px;
+    .final p{
+        font-size:16px;
     }
 
-    .order-top{
-        flex-direction:column;
-        align-items:flex-start;
+    footer{
+        font-size:13px;
+    }
+}
+
+/* EXTRA SMALL DEVICES */
+@media(max-width:480px){
+
+    .logo h1{
+        font-size:20px;
     }
 
-    .customer{
-        width:100%;
+    .hero h1{
+        font-size:32px;
     }
 
-    .customer h2{
-        font-size:18px;
+    .hero p{
+        font-size:14px;
     }
 
-    /* INFO BOX */
-    .order-info{
-        grid-template-columns:1fr;
+    .card h2{
+        font-size:24px;
     }
 
-    /* ITEMS */
-    .item{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:5px;
+    .card p{
+        font-size:14px;
     }
 
-    /* BUTTONS */
-    .actions{
-        flex-direction:column;
-        align-items:stretch;
+    .final h2{
+        font-size:28px;
     }
 
-    .actions select,
-    .delete-btn{
-        width:100%;
+    .final p{
+        font-size:14px;
     }
-
-    /* RECEIPT IMAGE */
-    .receipt img{
-        width:100%;
-        max-width:250px;
-    }
-
-    /* LOGIN */
-    #loginBox{
-        margin-top:40px;
-        padding:25px;
-    }
-
-    #loginBox h2{
-        font-size:26px;
-    }
-
 }
 
 </style>
@@ -407,23 +425,32 @@ footer{
         <h1>🌿 Eloisa's Garden</h1>
     </div>
 
-    <ul class="nav-links">
+    <!-- MENU BUTTON -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
 
-        <li><a href="dropdown.html">Home</a></li>
+    <ul class="nav-links" id="navMenu">
 
-       <li>
-    <a href="About us.html" class="active">
-        About Us
-    </a>
-</li>
+        <li>
+            <a href="dropdown.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="About us.html" class="active">
+                About Us
+            </a>
+        </li>
 
         <li class="dropdown">
 
-            <a href="#">
+            <a href="#" onclick="toggleDropdown(event)">
                 Our Products ▼
             </a>
 
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdownMenu">
 
                 <a href="Indoor.html">
                     🌱 Indoor Plants
@@ -437,9 +464,17 @@ footer{
 
         </li>
 
-        <li><a href="About Our Products.html">About Our Products</a></li>
+        <li>
+            <a href="About Our Products.html">
+                About Our Products
+            </a>
+        </li>
 
-        <li><a href="Contact.html">Contact Us</a></li>
+        <li>
+            <a href="Contact.html">
+                Contact Us
+            </a>
+        </li>
 
     </ul>
 
@@ -449,6 +484,7 @@ footer{
 <section class="section hero">
 
     <div class="hero-content">
+
         <h1>About Eloisa’s Garden</h1>
 
         <p>
@@ -456,6 +492,7 @@ footer{
             We believe every plant brings beauty, calmness,
             and life into every home.
         </p>
+
     </div>
 
 </section>
@@ -574,6 +611,26 @@ footer{
 <footer>
     © 2026 Eloisa's Garden | Bringing Nature Closer To You 🌱
 </footer>
+
+<script>
+
+/* MOBILE MENU */
+function toggleMenu(){
+
+    document.getElementById("navMenu")
+    .classList.toggle("show");
+}
+
+/* DROPDOWN */
+function toggleDropdown(event){
+
+    event.preventDefault();
+
+    document.getElementById("dropdownMenu")
+    .classList.toggle("show");
+}
+
+</script>
 
 </body>
 </html>
